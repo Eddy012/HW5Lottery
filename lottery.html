@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 5: Lottery</title>
+<link rel="stylesheet" href="lotterysty.css">
+</head>
+
+<body>
+
+<h1>The Lottery Game</h1>
+
+
+
+<script language = "javascript">
+
+
+    var userNumbers = window.prompt("enter 5 winning numbers from 0 to 48");
+    var userLucky = window.prompt("enter your lucky number between 0 and 18");
+</script>
+
+
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Numbers</th>
+    
+  </tr>
+  <tr>
+    <td>Winning Numbers</td>
+    <td><script language = "javascript">
+    
+    var winningNum = [];
+    
+    
+    
+    var winningNum = userNumbers.split(" ").map(Number);
+    
+    winningNum = winningNum.sort(function (a, b) {  return a - b;  });
+    
+    for(var i = 0; i < winningNum.length; i++){
+      document.write(winningNum[i] + " ");
+    }
+    
+    document.write("<br> Lucky Number is " + userLucky + "<br>");
+    
+    
+    </script>
+    </td>
+   
+  </tr>
+  <tr>
+    <td>Random Pick</td>
+    <td><script language = "javascript">
+    var pickedNum = [];
+    
+    pickedNum.push(Math.floor(Math.random() * 48));
+    while(pickedNum.length < 5) {
+        
+        var num = Math.floor(Math.random() * 48);
+        if(notRepeat(num, pickedNum)){
+            pickedNum.push(num);
+        }
+            
+    }
+    
+    pickedNum = pickedNum.sort(function (a, b) {  return a - b;  });
+    for(var i = 0; i < 5; i++) {
+        document.write(pickedNum[i] + " ");
+    }
+    
+    var luckyNum = Math.floor(Math.random() * 18);
+    document.write("<br> Lucky Number is " + luckyNum);
+    
+    
+    function notRepeat(number, array){
+        if(array.includes(number)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    </script>
+    </td>
+   
+  </tr>
+  <tr>
+    <td>Matching Numbers</td>
+    <td>
+    <script language = "javascript">
+    var countMatches = 0;
+   
+    
+    
+    for(var i = 0; i < winningNum.length; i++) {
+        for(var j = 0; j < pickedNum.length; j++) {
+            if(winningNum[i] == pickedNum[j]) {
+                countMatches ++;
+            }
+        }
+    }
+    
+    document.write("the number of matches is " + countMatches);
+    </script>
+    
+    
+    </td>
+    
+  </tr>
+  <tr>
+    <td>Does the Lucky Ball Match?</td>
+    <td>
+    <script language = "javascript">
+    var luckyMatch = false;
+    if (luckyNum == userLucky) {
+        luckyMatch = true;
+        document.write("the lucky numbers match!");
+    }
+    else{
+        document.write("the lucky numbers don't match");
+    }
+    </script>
+    </td>
+    
+  </tr>
+  <tr>
+    <td>Your Winnings</td>
+    <td><script language = "javascript">
+    if(luckyMatch) {
+        if(countMatches == 5) {
+            document.write("you win $7,000 a week for life!");
+        }
+        if(countMatches == 4) {
+            document.write("you win $5000");
+        }
+        if(countMatches == 3) {
+            document.write("you win $150");
+        }
+        if(countMatches == 2) {
+            document.write("you win $25");
+        }
+        if(countMatches == 1) {
+            document.write("you win $6");
+        }
+        if(countMatches == 0) {
+            document.write("you win $4");
+        }
+    }
+    else {
+        if(countMatches == 5) {
+            document.write("you win $25,000 a year for life!");
+        }
+        if(countMatches == 4) {
+            document.write("you win $200");
+        }
+        if(countMatches == 3) {
+            document.write("you win $20");
+        }
+        if(countMatches == 2) {
+            document.write("you win $3");
+        }
+        else if (countMatches == 1 || countMatches ==0){
+            document.write("you win nothing :(")
+        }
+    }
+    
+    
+</script>
+    
+    
+    </td>
+   
+  </tr>
+ 
+</table>
+
+</body>
+</html>
