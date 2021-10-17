@@ -8,15 +8,11 @@
 <body>
 
 <h1>The Lottery Game</h1>
-
-
-
-<script language = "javascript">
-
+  <script language = "javascript">
 
     var userNumbers = window.prompt("enter 5 winning numbers from 0 to 48");
     var userLucky = window.prompt("enter your lucky number between 0 and 18");
-</script>
+  </script>
 
 
 
@@ -31,9 +27,6 @@
     <td><script language = "javascript">
     
     var winningNum = [];
-    
-    
-    
     var winningNum = userNumbers.split(" ").map(Number);
     
     winningNum = winningNum.sort(function (a, b) {  return a - b;  });
@@ -43,7 +36,6 @@
     }
     
     document.write("<br> Lucky Number is " + userLucky + "<br>");
-    
     
     </script>
     </td>
@@ -60,13 +52,12 @@
         var num = Math.floor(Math.random() * 48);
         if(notRepeat(num, pickedNum)){
             pickedNum.push(num);
-        }
-            
+        }      
     }
     
     pickedNum = pickedNum.sort(function (a, b) {  return a - b;  });
     for(var i = 0; i < 5; i++) {
-        document.write(pickedNum[i] + " ");
+      document.write(pickedNum[i] + " ");
     }
     
     var luckyNum = Math.floor(Math.random() * 18);
@@ -75,10 +66,10 @@
     
     function notRepeat(number, array){
         if(array.includes(number)){
-            return false;
+          return false;
         }
         else{
-            return true;
+          return true;
         }
     }
     </script>
@@ -94,17 +85,15 @@
     
     
     for(var i = 0; i < winningNum.length; i++) {
-        for(var j = 0; j < pickedNum.length; j++) {
-            if(winningNum[i] == pickedNum[j]) {
-                countMatches ++;
-            }
+      for(var j = 0; j < pickedNum.length; j++) {
+        if(winningNum[i] == pickedNum[j]) {
+          countMatches ++;
         }
+      }
     }
     
     document.write("the number of matches is " + countMatches);
     </script>
-    
-    
     </td>
     
   </tr>
@@ -167,7 +156,6 @@
     
     
 </script>
-    
     
     </td>
    
